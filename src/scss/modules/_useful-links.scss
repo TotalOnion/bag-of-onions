@@ -1,0 +1,7 @@
+@use "../utils/utils" as *;
+
+.useful-links {
+	&__list {
+		list-style-type: none;
+	}
+}

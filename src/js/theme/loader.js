@@ -2,6 +2,12 @@ export async function loaderJs() {
 	const currentPath = window.location.pathname;
 
 	const pathOperations = { 
+        '/useful-links': async () => {
+            await loadModuleAndCss( () =>
+                import(/* webpackChunkName: "useful-links" */ "../modules/useful-links.js"),
+                '/css/modules/_useful-links.css'
+            );
+        }, 
         '/qrcode': async () => {
             await loadModuleAndCss( () =>
                 import(/* webpackChunkName: "qrcode" */ "../modules/qrcode.js"),

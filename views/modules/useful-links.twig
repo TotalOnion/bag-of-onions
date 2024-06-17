@@ -1,0 +1,22 @@
+{% extends '../layouts/base.twig' %}
+
+{% set links = [{url: 'https://caniuse.com/', title: 'Can I Use', description: '"Can I use" provides up-to-date browser support tables for support of front-end web technologies on desktop and mobile web browsers.'}] %}
+
+{% block title %}
+    {% set pageTitle = 'Useful Links' %}
+    {{ pageTitle }}
+{% endblock %}
+
+{% block content %}
+        <div class="useful-links">
+                <ul class="useful-links__list">
+                        {% for link in links %}
+                                <a href="{{link.url}}"><li class="useful-links__link"><h2 class="useful-links__title">{{link.title}}</h2><br><p class="useful-links__description">{{link.description}}</p></li></a>
+                        {% endfor %}
+                </ul>
+        </div>
+{% endblock %}
+
+{% block seoContent %}
+        [Your SEO Content]
+{% endblock %}
