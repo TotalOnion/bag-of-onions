@@ -1,0 +1,99 @@
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[0].use[3]!./src/scss/modules/_boxshadow.scss ***!
+  \**********************************************************************************************************************************************************************************************/
+.boxshadow__inner {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.boxshadow__controls {
+  grid-area: 1/1/2/2;
+  background-color: var(--c-white);
+  border: solid 1px var(--border-color);
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+  height: fit-content;
+}
+
+.boxshadow__controls label {
+  font-weight: bold;
+  color: var(--black);
+  margin-top: 20px;
+}
+
+.boxshadow__view-window {
+  grid-area: 1/2/3/3;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--body-bg-color);
+  padding: 40px 0;
+  padding-top: calc(40 / var(--mobile-design-reference) * var(--screen-width-mobile));
+  padding-bottom: calc(40 / var(--mobile-design-reference) * var(--screen-width-mobile));
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 750px) {
+  .boxshadow__view-window {
+    padding-top: calc(40 / var(--portrait-design-reference) * var(--screen-width-portrait));
+    padding-bottom: calc(40 / var(--portrait-design-reference) * var(--screen-width-portrait));
+  }
+}
+@media screen and (min-width: 1024px) {
+  .boxshadow__view-window {
+    padding-top: calc(40 / var(--desktop-design-reference) * var(--screen-width-desktop));
+    padding-bottom: calc(40 / var(--desktop-design-reference) * var(--screen-width-desktop));
+  }
+}
+.boxshadow__view-window-shadow-box {
+  border: 1px solid #ccc;
+  align-self: center;
+  width: calc(200 / var(--mobile-design-reference) * var(--screen-width-mobile));
+  height: calc(200 / var(--mobile-design-reference) * var(--screen-width-mobile));
+}
+
+@media screen and (min-width: 750px) {
+  .boxshadow__view-window-shadow-box {
+    width: calc(200 / var(--portrait-design-reference) * var(--screen-width-portrait));
+    height: calc(200 / var(--portrait-design-reference) * var(--screen-width-portrait));
+  }
+}
+@media screen and (min-width: 1024px) {
+  .boxshadow__view-window-shadow-box {
+    width: calc(200 / var(--desktop-design-reference) * var(--screen-width-desktop));
+    height: calc(200 / var(--desktop-design-reference) * var(--screen-width-desktop));
+  }
+}
+.boxshadow__css-window {
+  grid-area: 2/1/3/2;
+  font-family: "Courier New", monospace;
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 8px;
+  width: 80%;
+  height: fit-content;
+  max-width: 600px;
+  margin: 10px auto;
+  color: #212529;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.boxshadow__css-window.active::before {
+  content: "copied to clipboard";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: black;
+  display: block;
+  color: white;
+  white-space: nowrap;
+  padding: 10px;
+}

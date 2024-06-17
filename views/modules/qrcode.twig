@@ -1,0 +1,60 @@
+{% extends '../layouts/base.twig' %}
+
+{% block title %}
+	{% set pageTitle = 'QRCode Generator' %}
+	{{ pageTitle }}
+{% endblock %}
+
+{% block content %}
+	<div class="qrcode">
+		<h2 class="qrcode__title">QRCode Generator</h2>
+		<div class="qrcode__content-wrapper">
+			<form class="qrcode__form">
+				<label for="urlField">Enter URL:</label>
+				<input type="text" name="urlField" class="qrcode__url-input" placeholder="example.com">
+				<label for="darkColourField">Select Dark Colour</label>
+				<input type="color" name="darkColourField" class="qrcode__dark-colour-input" value="#000000">
+				<label for="lightColourField">Select Light Colour</label>
+				<input
+				type="color" name="lightColourField" class="qrcode__light-colour-input" value="#ffffff">
+				<label>Show Logo: 
+                                <input type="checkbox" class="qrcode__toggle-logo" checked>  
+                                </label>
+                                
+			{% include '../partials/buttons.twig' with { 
+			                                buttons: [
+			                                        { selector: 'export-qr-code', style: 'primary', blockClassName: 'qrcode', label: 'Export QR Code' }
+			                                ],
+			                        } %}
+			</form>
+			<div id="qrcode" class="qrcode__qr-box show-logo"></div>
+		</div>
+
+	</div>
+        <div class="qrcode__modal">
+                <div class="qrcode__modal-content-wrapper">
+                        <span class="qrcode__modal-close">&times;</span>
+                        <h2 class="qrcode__modal-title">Export Options:</h2>
+                        <form class="qrcode__modal-export-form">
+                                <label for="fileType">File Type</label>
+                                <select name="fileType" class="qrcode__file-type">
+                                        <option value="png">PNG</option>
+                                        <option value="svg">SVG</option>
+                                        <option value="webp">WEBP</option>
+                                        <option value="jpeg">JPEG</option>
+                                </select>
+                                <label for="qrSize">Size</label>
+                                <input type="number" name="qrSize" class="qrcode__size" value="150" min="50" max="1650">
+                                {% include '../partials/buttons.twig' with { 
+                                                                buttons: [
+                                                                        { selector: 'save-button', style: 'primary', blockClassName: 'qrcode', label: 'Save QR Code' }
+                                                                ],
+                                                        } %}
+                        </form>
+                </div>
+        </div>
+{% endblock %}
+
+{% block seoContent %}
+	[Your SEO Content]
+{% endblock %}

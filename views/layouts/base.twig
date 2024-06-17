@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bag Of Onions
+			{% block title %}
+				{% set pageTitle = "" %}
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧅</text></svg>">
+		<link rel="stylesheet" type="text/css" href="{{ asset("css/main.css") }}">
+	</head>
+	<body data-theme="dark">
+		<div id="sidebar" class="sidebar active">
+			{% include './sidebar.twig' %}
+		</div>
+
+		<div id="main-content">
+			<span class="loader"></span>
+			{% include './site-header.twig' with {'pageTitle': pageTitle} %}
+			<div class="onion-module lazy">
+				{% block content %}
+					{#  #}
+				{% endblock %}
+			</div>
+
+			<div class="onion-module lazy onion-module--red">
+
+				{% block seoContent %}
+					{#  #}
+				{% endblock %}
+			</div>
+		</div>
+
+		<script src="{{ asset("js/main.bundle.js") }}"></script>
+
+		{% block scripts %}{% endblock %}
+	</body>
+</html></body></html>

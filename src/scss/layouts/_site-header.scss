@@ -1,0 +1,81 @@
+@use '../utils/utils' as *;
+
+.site-header {
+	position: sticky;
+	top: 0;
+	border: solid 1px var(--border-color);
+	padding: fluidSize(20, 'mobile');
+	border-radius: fluidSize(10, 'mobile');
+	margin: fluidSize(40, 'mobile');
+
+	@include device($tabPortrait) {
+		padding: fluidSize(20, 'portrait');
+		border-radius: fluidSize(10, 'portrait');
+		margin: fluidSize(40, 'portrait');
+	}
+
+	@include device($tabLandscape) {
+		padding: fluidSize(20, 'desktop');
+		border-radius: fluidSize(10, 'desktop');
+		margin: fluidSize(40, 'desktop');
+	}
+
+	background: var(--module-bg-color);
+
+	&__inner {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__title {
+		margin: 0px;
+
+		font-size: fluidSize(9, "mobile");
+
+		@include device($tabPortrait) {
+			font-size: fluidSize(22, "portrait");
+		}
+
+		@include device($tabLandscape) {
+			font-size: fluidSize(22, "desktop");
+		}
+	}
+
+	&__burger {
+		display: none;
+		cursor: pointer;
+
+		&--line {
+			// transition: all .2s	;
+			transform: rotate(360deg);
+			background: var(--accent-color);
+			margin-bottom: fluidSize(5, "mobile");
+			height: fluidSize(1, "mobile");
+			width: fluidSize(15, "mobile");
+
+			@include device($tabPortrait) {
+				margin-bottom: fluidSize(5, "portrait");
+				height: fluidSize(1, "portrait");
+				width: fluidSize(15, "portrait");
+			}
+
+			@include device($tabLandscape) {
+				margin-bottom: fluidSize(5, "desktop");
+				height: fluidSize(1, "desktop");
+				width: fluidSize(15, "desktop");
+			}
+
+			&:last-child {
+				margin: 0px;
+				transform: rotate(0deg);
+			}
+		}
+
+		&.active {
+
+			display: block;
+		}
+	}
+}

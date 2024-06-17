@@ -1,0 +1,62 @@
+@use '../utils/utils' as *;
+@use '../partials/buttons';
+
+.screensize {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 40vh;
+
+	&__title {
+		text-align: center;
+
+		margin-bottom: fluidSize(20, 'mobile');
+
+		@include device($tabPortrait) {
+			margin-bottom: fluidSize(20, 'portrait');
+		}
+
+		@include device($tabLandscape) {
+			margin-bottom: fluidSize(20, 'desktop');
+		}
+	}
+
+	&__viewport {
+		text-align: center;
+	}
+
+	&__actual {
+		text-align: center;
+	}
+
+	&__copyToClipboard {
+		width: fit-content;
+
+		margin-left: auto;
+		margin-right: auto;
+
+		margin-top: fluidSize(40, 'mobile');
+
+		@include device($tabPortrait) {
+			margin-top: fluidSize(40, 'portrait');
+		}
+
+		@include device($tabLandscape) {
+			margin-top: fluidSize(40, 'desktop');
+		}
+	}
+
+	&__button-confirmations {
+		text-align: center;
+		margin-top: fluidSize(12, 'mobile');
+
+		@include device($tabPortrait) {
+			margin-top: fluidSize(12, 'portrait');
+		}
+
+		@include device($tabLandscape) {
+			margin-top: fluidSize(12, 'desktop');
+		}
+	}
+
+}

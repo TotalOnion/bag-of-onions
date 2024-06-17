@@ -1,0 +1,22 @@
+{% extends '../layouts/base.twig' %}
+
+{% block title %}
+	{% set pageTitle = 'Screensize' %}
+	{{ pageTitle }}
+{% endblock %}
+
+
+{% block content %}
+	<div class="screensize">
+		<h1 class="screensize__title">Screensize</h1>
+		<p class="screensize__viewport"></p>
+		<p class="screensize__actual"></p>
+		{% include '../partials/buttons.twig' with { 
+		buttons: [
+			{ id: 'copyToClipboard', selector: 'copyToClipboard', style: 'primary', blockClassName: 'screensize', label: 'Copy To Clipboard' }
+		],
+		} %}
+		<p class="screensize__button-confirmations"></p>
+	</div>
+
+{% endblock %}

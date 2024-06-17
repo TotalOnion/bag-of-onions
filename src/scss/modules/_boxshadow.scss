@@ -1,0 +1,104 @@
+@use '../utils/utils' as *;
+
+.boxshadow {
+
+  &__inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+
+  &__controls {
+    grid-area: 1 / 1 / 2 / 2;
+    background-color: var(--c-white);
+    border: solid 1px var(--border-color);
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    height: fit-content;
+
+    label {
+      font-weight: bold;
+      color: var(--black);
+      margin-top: 20px;
+    }
+  }
+
+  &__view-window {
+    grid-area: 1 / 2 / 3 / 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--body-bg-color);
+    padding: 40px 0;
+
+    padding-top: fluidSize(40, 'mobile');
+    padding-bottom: fluidSize(40, 'mobile');
+
+    @include device($tabPortrait) {
+      padding-top: fluidSize(40, 'portrait');
+      padding-bottom: fluidSize(40, 'portrait');
+    }
+
+    @include device($tabLandscape) {
+      padding-top: fluidSize(40, 'desktop');
+      padding-bottom: fluidSize(40, 'desktop');
+    }
+
+    border-radius: 5px;
+
+
+
+  }
+
+  &__view-window-shadow-box {
+    border: 1px solid #ccc;
+    align-self: center;
+
+    width: fluidSize(200, 'mobile');
+    height: fluidSize(200, 'mobile');
+
+    @include device($tabPortrait) {
+      width: fluidSize(200, 'portrait');
+      height: fluidSize(200, 'portrait');
+    }
+
+    @include device($tabLandscape) {
+      width: fluidSize(200, 'desktop');
+      height: fluidSize(200, 'desktop');
+    }
+  }
+
+  &__css-window {
+    grid-area: 2 / 1 / 3 / 2;
+    font-family: 'Courier New', monospace;
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 8px;
+    width: 80%;
+    height: fit-content;
+    max-width: 600px;
+    margin: 10px auto;
+    color: #212529;
+
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+
+    &.active::before {
+      content: 'copied to clipboard';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: black;
+      display: block;
+      color: white;
+      white-space: nowrap;
+      padding: 10px;
+    }
+  }
+}

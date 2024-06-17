@@ -1,0 +1,49 @@
+@use '../utils/utils' as *;
+
+#main-content {
+	background-color: var(--body-bg-color);
+	color: var(--text-color);
+	flex-grow: 1;
+	z-index: 1;
+	position: relative;
+
+	.onion-module {
+		background-color: var(--module-bg-color);
+		border: solid 1px var(--border-color);
+		padding: fluidSize(20, 'mobile');
+		border-radius: fluidSize(10, 'mobile');
+		margin: fluidSize(40, 'mobile');
+
+		@include device($tabPortrait) {
+			padding: fluidSize(20, 'portrait');
+			border-radius: fluidSize(10, 'portrait');
+			margin: fluidSize(40, 'portrait');
+		}
+
+		@include device($tabLandscape) {
+			padding: fluidSize(20, 'desktop');
+			border-radius: fluidSize(10, 'desktop');
+			margin: fluidSize(40, 'desktop');
+		}
+
+		&--red {
+			background: var(--module-red);
+		}
+
+	}
+
+	.loader {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 48px;
+		height: 48px;
+		border: 5px solid #FFF;
+		border-bottom-color: transparent;
+		border-radius: 50%;
+		display: block;
+		box-sizing: border-box;
+		animation: rotation 1s linear infinite;
+	}
+}

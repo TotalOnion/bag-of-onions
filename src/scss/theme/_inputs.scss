@@ -1,0 +1,235 @@
+@use "../utils/utils" as *;
+
+fieldset {
+	border: 1px solid var(--border-color);
+	padding: 30px 20px 20px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	position: relative;
+	background-color: var(--body-bg-color);
+
+	legend {
+		padding: 0 10px;
+		font-family: var(--primary-font-family);
+		font-weight: 600;
+		// color: var(--c-white);
+		position: absolute;
+		top: -10px;
+		// background: var(--primary-purple);
+		left: -10px;
+		padding: 5px 10px;
+
+		border: solid 1px var(--border-color);
+		background: var(--body-bg-color);
+	}
+}
+
+label {
+	text-transform: uppercase;
+	font-family: var(--primary-font-family);
+	display: block;
+
+	padding: fluidSize(10, "mobile") 0;
+
+	@include device($tabPortrait) {
+		padding: fluidSize(10, "portrait") 0;
+	}
+
+	@include device($tabLandscape) {
+		padding: fluidSize(10, "desktop") 0;
+	}
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="file"],
+input[type="submit"],
+select,
+textarea {
+	text-transform: uppercase;
+	background-color: var(--body-bg-color);
+	color: var(--text-color);
+	font-family: var(--primary-font-family);
+	border: solid 1px var(--border-color);
+	width: 100%;
+
+	padding: fluidSize(10, "mobile");
+
+	@include device($tabPortrait) {
+		padding: fluidSize(10, "portrait");
+	}
+
+	@include device($tabLandscape) {
+		padding: fluidSize(10, "desktop");
+	}
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+textarea {
+	resize: vertical;
+}
+
+input[type="checkbox"] {
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	border: solid 1px var(--border-color);
+	border-radius: 4px;
+	position: relative;
+	cursor: pointer;
+
+	&:checked::before {
+		content: "";
+		width: 10px;
+		height: 10px;
+		background-color: var(--accent-color);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border-radius: 2px;
+	}
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
+	}
+}
+
+input[type="radio"] {
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	border: 1px solid var(--border-color);
+	border-radius: 50%;
+	position: relative;
+	cursor: pointer;
+
+	&:checked::before {
+		content: "";
+		width: 10px;
+		height: 10px;
+		background-color: var(--accent-color);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border-radius: 50%;
+	}
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
+	}
+}
+
+input[type="range"] {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 20px;
+	background: transparent;
+	cursor: pointer;
+
+	&::-webkit-slider-runnable-track {
+		width: 100%;
+		height: 2px;
+		background: var(--border-color);
+		border: 1px solid var(--border-color);
+		border-radius: 5px;
+		position: relative;
+	}
+
+	&::-moz-range-track {
+		width: 100%;
+		height: 2px;
+		background: var(--border-color);
+		border: 1px solid var(--border-color);
+		border-radius: 5px;
+		position: relative;
+	}
+
+	&::-ms-track {
+		width: 100%;
+		height: 2px;
+		background: transparent;
+		border-color: transparent;
+		color: transparent;
+		position: relative;
+	}
+
+	&::-ms-fill-lower {
+		background: var(--border-color);
+	}
+
+	&::-ms-fill-upper {
+		background: var(--border-color);
+	}
+
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		width: 20px;
+		height: 20px;
+		background: var(--accent-color);
+		border-radius: 4px;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&::-moz-range-thumb {
+		width: 20px;
+		height: 20px;
+		background: var(--accent-color);
+		border-radius: 4px;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&::-ms-thumb {
+		width: 20px;
+		height: 20px;
+		background: var(--accent-color);
+		border-radius: 4px;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+input[type="color"] {
+	-webkit-appearance: none;
+	width: 40px;
+	height: 40px;
+	border: 2px solid #000;
+	border-radius: 50%;
+	padding: 0;
+	cursor: pointer;
+	background: none;
+	position: relative;
+
+	&::-webkit-color-swatch-wrapper {
+		padding: 0;
+	}
+
+	&::-webkit-color-swatch {
+		border: none;
+		border-radius: 50%;
+	}
+
+	&::-moz-color-swatch {
+		border: none;
+		border-radius: 50%;
+	}
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
+	}
+}

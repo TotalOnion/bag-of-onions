@@ -1,0 +1,32 @@
+<header class="site-header">
+	<div class="site-header__inner">
+		<div class="site-header__burger">
+			<div class="site-header__burger--line"></div>
+			<div class="site-header__burger--line"></div>
+			<div class="site-header__burger--line"></div>
+		</div>
+
+
+		{% if pageTitle %}
+			<h1>{{ pageTitle }}</h1>
+
+		{% else %}
+			<a href="/">
+				<h1 class="site-header__title">
+					🧅
+				</h1>
+			</a>
+		{% endif %}
+
+
+		<div class="site-header__toggle-theme">
+			<label class="switch">
+				<input id="toggler" type="checkbox">
+				<span class="slider round"></span>
+			</label>
+
+		</div>
+	</div>
+
+
+</header>

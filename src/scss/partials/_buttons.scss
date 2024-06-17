@@ -1,0 +1,64 @@
+.onion-button {
+    &__button-wrapper {
+        display: flex;
+        gap: 1em;
+        padding: 1em 0;
+
+        &--vertical {
+            flex-direction: column;
+        }
+
+        &--horizontal {
+            flex-direction: row;
+        }
+
+        &--extra-padding {
+            padding: 2em 0;
+        }
+    }
+
+    &__button {
+        padding: 0.5em;
+        font-size: 1em;
+        text-transform: uppercase;
+        font-weight: 500;
+        transition: all .4s;
+        white-space: nowrap;
+        text-decoration: none;
+
+        &--primary {
+            background-color: var(--body-bg-color);
+            border: .1em solid var(--border-color);
+            color: var(--c-black);
+        }
+
+        &--secondary {
+            background-color: var(--accent-color);
+            border: .1em solid var(--c-black);
+            color: var(--accent-text-color);
+        }
+
+        &--log {
+            position: absolute;
+            right: 1em;
+            background: white;
+            border-radius: 5px;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            &.onion-button__button--primary {
+                background: var(--accent-color);
+                color: var(--accent-text-color);
+                border-color: var(--accent-color)
+            }
+
+            &.onion-button__button--secondary {
+                background: var(--body-bg-color);
+                color: var(--text-color);
+                border-color: var(--border-color);
+            }
+        }
+    }
+}

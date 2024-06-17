@@ -1,0 +1,164 @@
+@use '../utils/utils' as *;
+
+.sidebar {
+	width: 100%;
+	min-height: 100%;
+	padding: 0;
+	background-color: var(--sidebar-bg-color);
+	color: var(--text-color);
+	font-family: var(--primary-font-family);
+	// transition: all .4s;
+	max-width: 0;
+	position: relative;
+
+	transition: max-width 0.4s ease-in-out;
+
+	&__title {
+		padding: 20px 0px 0px;
+		text-align: center;
+		white-space: nowrap;
+
+		padding-left: fluidSize(5, "mobile");
+
+		@include device($tabPortrait) {
+			padding-left: fluidSize(5, "portrait");
+		}
+
+		@include device($tabLandscape) {
+			padding-left: fluidSize(10, "desktop");
+		}
+	}
+
+	&__title-link {
+		color: var(--text-color);
+	}
+
+	&__close-sidebar {
+		display: none;
+		background: var(--sidebar-bg-color);
+		border: solid 1px var(--border-color);
+		position: absolute;
+		z-index: 2;
+		border-radius: 50%;
+		cursor: pointer;
+		// transition: all .4s;
+
+		right: fluidSize(-12, 'mobile');
+		top: fluidSize(62, 'mobile');
+		width: fluidSize(24, 'mobile');
+		height: fluidSize(24, 'mobile');
+
+		@include device($tabPortrait) {
+			right: fluidSize(-12, 'portrait');
+			top: fluidSize(62, 'portrait');
+			width: fluidSize(24, 'portrait');
+			height: fluidSize(24, 'portrait');
+		}
+
+		@include device($tabLandscape) {
+			right: fluidSize(-12, 'desktop');
+			top: fluidSize(62, 'desktop');
+			width: fluidSize(24, 'desktop');
+			height: fluidSize(24, 'desktop');
+		}
+
+
+		&.right {
+			transform: rotate(-0);
+			-webkit-transform: rotate(-0);
+		}
+
+		&.left {
+			transform: rotate(180deg);
+			-webkit-transform: rotate(180deg);
+		}
+	}
+
+	&__arrow {
+		border: solid var(--accent-color);
+		border-width: 0 2px 2px 0;
+		display: inline-block;
+		transform: translate(-50%, -50%) rotate(135deg);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		padding: fluidSize(3, 'mobile');
+		margin-left: fluidSize(1, 'mobile');
+
+		@include device($tabPortrait) {
+			padding: fluidSize(3, 'portrait');
+			margin-left: fluidSize(1, 'portrait');
+		}
+
+		@include device($tabLandscape) {
+			padding: fluidSize(3, 'desktop');
+			margin-left: fluidSize(1, 'desktop');
+		}
+	}
+
+	&.active {
+
+		border-right: solid 1px var(--border-color);
+
+		.sidebar__close-sidebar {
+			display: block;
+		}
+
+		max-width: fluidSize(150, "mobile");
+
+		@include device($tabPortrait) {
+			max-width: fluidSize(150, "portrait");
+		}
+
+		@include device($tabLandscape) {
+			max-width: fluidSize(250, "desktop");
+		}
+
+	}
+
+	&__request-button {
+		background: var(--accent-color);
+		text-align: center;
+		padding: 10px;
+
+		&:hover {
+			transition: .2s;
+			opacity: 0.7;
+		}
+	}
+
+	&__request-button-link {
+		color: var(--accent-text-color);
+		white-space: nowrap;
+		font-size: 12px;
+		text-transform: uppercase;
+		font-weight: 900;
+	}
+
+
+	// ul {
+	// 	margin-bottom: fluidSize(10, "mobile");
+	// 	@include device($tabPortrait) {
+	// 		margin-bottom: fluidSize(10, "portrait");
+	// 	}
+	// 	@include device($tabLandscape) {
+	// 		margin-bottom: fluidSize(20, "desktop");
+	// 	}
+	// 				padding: fluidSize(5, "mobile");
+	// 		@include device($tabPortrait) {
+	// 			padding: fluidSize(5, "portrait");
+	// 		}
+	// 		@include device($tabLandscape) {
+	// 			padding: fluidSize(10, "desktop");
+	// 		}
+	// 	li {
+	// 		white-space: nowrap;
+
+	// 		a:visited {
+	// 			color: var(--text-color);
+	// 			text-decoration: unset;
+	// 		}
+	// 	}
+	// }
+}

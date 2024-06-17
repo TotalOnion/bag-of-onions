@@ -1,0 +1,35 @@
+:root {
+	--screen-width-static: 1440px;
+	--screen-width-fullhd: 85vw;
+	--screen-width-desktop: 100vw;
+	--screen-width-landscape: 100vw;
+	--screen-width-portrait: 100vw;
+	--screen-width-mobile: 375px;
+
+	--fullhd-design-reference: 1440;
+	--desktop-design-reference: 1440;
+	--landscape-design-reference: 1024;
+	--portrait-design-reference: 768;
+	--mobile-design-reference: 375;
+}
+
+.lazy {
+	opacity: 0;
+	transition: opacity 0.4s;
+
+
+
+	@keyframes rotation {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	&.loaded {
+		opacity: 1;
+	}
+}

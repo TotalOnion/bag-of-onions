@@ -1,0 +1,64 @@
+@use "sass:math";
+@use './variables'; // Make sure variables.scss exists and contains the necessary variables
+
+
+
+// @use "base.scss";
+
+@function fontSize($size-px, $screen: "mobile") {
+    @if $screen =="mobile" {
+        @return calc((($size-px / var(--mobile-design-reference)) * var(--font-reference-mobile)) * var(--font-size-multiplier));
+    }
+
+    @else if $screen =="portrait" {
+        @return calc((($size-px / var(--portrait-design-reference)) * var(--font-reference-portrait)) * var(--font-size-multiplier));
+    }
+
+    @else if $screen =="landscape" {
+        @return calc((($size-px / var(--landscape-design-reference)) * var(--font-reference-landscape)) * var(--font-size-multiplier));
+    }
+
+    @else if $screen =="desktop" {
+        @return calc((($size-px / var(--desktop-design-reference)) * var(--font-reference-desktop)) * var(--font-size-multiplier));
+    }
+
+    @else if $screen =="static" {
+        @return calc((($size-px / var(--desktop-design-reference)) * var(--screen-width-static)) * var(--font-size-multiplier));
+    }
+
+    @else {
+        @return calc((($size-px / var(--desktop-design-reference)) * var(--font-reference-desktop)) * var(--font-size-multiplier));
+    }
+}
+
+@function fluidSize($size-px, $screen: "mobile") {
+    @if $screen =="mobile" {
+        @return calc((($size-px / var(--mobile-design-reference))) * var(--screen-width-mobile));
+    }
+
+    @else if $screen =="portrait" {
+        @return calc((($size-px / var(--portrait-design-reference))) * var(--screen-width-portrait));
+    }
+
+    @else if $screen =="landscape" {
+        @return calc((($size-px / var(--landscape-design-reference))) * var(--screen-width-landscape));
+    }
+
+    @else if $screen =="desktop" {
+        @return calc((($size-px / var(--desktop-design-reference))) * var(--screen-width-desktop));
+    }
+
+    @else if $screen =="static" {
+        @return calc((($size-px / var(--desktop-design-reference))) * var(--screen-width-static));
+    }
+
+    @else {
+        @return calc((($size-px / var(--desktop-design-reference))) * var(--screen-width-static));
+    }
+}
+
+@mixin device($size: "768px", $type: "min-width") {
+    @media screen and (#{$type}: #{$size}) {
+        @content;
+    }
+}

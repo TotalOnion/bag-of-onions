@@ -1,0 +1,43 @@
+{% extends '../layouts/base.twig' %}
+
+{% block title %}
+	{% set pageTitle = 'Box Shadow' %}
+	{{ pageTitle }}
+{% endblock %}
+
+{% block content %}
+	<div class="boxshadow">
+		<div class="boxshadow__inner">
+			<div class="boxshadow__controls">
+				<label for="horizontal-offset">Horizontal Offset:</label>
+				<input type="range" id="horizontal-offset" min="-50" max="50" value="0">
+
+				<label for="vertical-offset">Vertical Offset:</label>
+				<input type="range" id="vertical-offset" min="-50" max="50" value="0">
+
+				<label for="blur-radius">Blur Radius:</label>
+				<input type="range" id="blur-radius" min="0" max="50" value="0">
+
+				<label for="spread-radius">Spread Radius:</label>
+				<input type="range" id="spread-radius" min="0" max="50" value="0">
+
+				<label for="color-picker">Shadow Color:</label>
+				<input type="color" id="color-picker" value="#000000">
+			</div>
+			<div class="boxshadow__view-window">
+				<div class="boxshadow__view-window-shadow-box"></div>
+			</div>
+
+			<div id="cssOutput" class="boxshadow__css-window">box-shadow: 0px 0px 0px 0px #000000;</div>
+
+
+		</div>
+	</div>
+{% endblock %}
+
+{% block seoContent %}
+	<p>Create Stunning Box Shadows with Our CSS Box Shadow Generator Are you looking to add eye-catching box shadows to your web design projects? Look no further! Our CSS Box Shadow Generator is the perfect tool to help you create custom box shadows effortlessly. Whether you are a seasoned developer or a novice, our intuitive interface makes it easy to generate the perfect box shadow for your needs.</p>
+	<p>Key Features of Our Box Shadow Generator: Adjustable Horizontal Offset: Control the horizontal placement of your shadow to achieve the desired look. Customizable Vertical Offset: Modify the vertical position of your shadow to add depth to your design. Blur Radius Control: Smooth out the edges of your shadow with adjustable blur radius settings. Spread Radius Adjustment: Expand or contract your shadow with precise spread radius options. Color Picker: Choose the perfect color for your shadow using our easy-to-use color picker. How to Use the CSS Box Shadow Generator: Set Horizontal Offset: Use the slider to adjust the horizontal position of the shadow. Adjust Vertical Offset: Modify the vertical placement to add dimension. Control Blur Radius: Smoothen the shadow's edges by adjusting the blur radius. Adjust Spread Radius: Expand or narrow the shadow as per your design needs. Pick a Shadow Color: Select the ideal color for your shadow using the color picker. Once you've customized your box shadow, the generated CSS code will be displayed in the CSS window. Simply copy the code and paste it into your project to see the changes instantly.</p>
+	<p>Why Use Box Shadows in Web Design? Box shadows are a versatile design element that can add depth, dimension, and visual interest to your web pages. They can make buttons stand out, create a sense of layering, and enhance the overall user experience. With our Box Shadow Generator, you can quickly experiment with different shadow styles and find the perfect match for your design.</p>
+	<p>Benefits of Using Our CSS Box Shadow Generator: User-Friendly Interface: Easily create and customize box shadows with our intuitive controls. Instant Preview: See real-time changes as you adjust the shadow parameters. Copy and Paste Code: Quickly generate CSS code that you can use in your projects. Free to Use: Our tool is completely free, with no hidden costs or subscription fees. Take your web design to the next level with our CSS Box Shadow Generator. Start creating beautiful box shadows today and make your website stand out!</p>
+{% endblock %}

@@ -1,0 +1,180 @@
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[0].use[3]!./src/scss/modules/_qrcode.scss ***!
+  \*******************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+.onion-button__button-wrapper {
+  display: flex;
+  gap: 1em;
+  padding: 1em 0;
+}
+
+.onion-button__button-wrapper--vertical {
+  flex-direction: column;
+}
+
+.onion-button__button-wrapper--horizontal {
+  flex-direction: row;
+}
+
+.onion-button__button-wrapper--extra-padding {
+  padding: 2em 0;
+}
+
+.onion-button__button {
+  padding: 0.5em;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.4s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.onion-button__button--primary {
+  background-color: var(--body-bg-color);
+  border: 0.1em solid var(--border-color);
+  color: var(--c-black);
+}
+
+.onion-button__button--secondary {
+  background-color: var(--accent-color);
+  border: 0.1em solid var(--c-black);
+  color: var(--accent-text-color);
+}
+
+.onion-button__button--log {
+  position: absolute;
+  right: 1em;
+  background: white;
+  border-radius: 5px;
+}
+
+.onion-button__button:hover {
+  cursor: pointer;
+}
+
+.onion-button__button:hover.onion-button__button--primary {
+  background: var(--accent-color);
+  color: var(--accent-text-color);
+  border-color: var(--accent-color);
+}
+
+.onion-button__button:hover.onion-button__button--secondary {
+  background: var(--body-bg-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.qrcode__qr-box {
+  display: none;
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+
+.qrcode__qr-box::after {
+  content: "";
+  display: none;
+  position: absolute;
+  width: 33.33%;
+  height: 33.33%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%A7%85</text></svg>");
+  background-repeat: no-repeat;
+}
+
+.qrcode__qr-box.active {
+  display: block;
+}
+
+.qrcode__qr-box.show-logo::after {
+  display: block;
+}
+
+.qrcode__content-wrapper {
+  display: flex;
+  gap: calc(20 / var(--mobile-design-reference) * var(--screen-width-mobile));
+}
+
+@media screen and (min-width: 750px) {
+  .qrcode__content-wrapper {
+    gap: calc(20 / var(--portrait-design-reference) * var(--screen-width-portrait));
+  }
+}
+@media screen and (min-width: 1024px) {
+  .qrcode__content-wrapper {
+    gap: calc(20 / var(--desktop-design-reference) * var(--screen-width-desktop));
+  }
+}
+.qrcode__modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--modal-overlay-color);
+}
+
+.qrcode__modal.active {
+  display: block;
+}
+
+.qrcode__modal-content-wrapper {
+  position: relative;
+  background-color: var(--module-bg-color);
+  width: fit-content;
+  margin: 10% auto;
+  padding: calc(20 / var(--mobile-design-reference) * var(--screen-width-mobile));
+}
+
+@media screen and (min-width: 750px) {
+  .qrcode__modal-content-wrapper {
+    padding: calc(20 / var(--portrait-design-reference) * var(--screen-width-portrait));
+  }
+}
+@media screen and (min-width: 1024px) {
+  .qrcode__modal-content-wrapper {
+    padding: calc(20 / var(--desktop-design-reference) * var(--screen-width-desktop));
+  }
+}
+.qrcode__modal-close {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.qrcode__modal-export-form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(20 / var(--mobile-design-reference) * var(--screen-width-mobile));
+}
+
+@media screen and (min-width: 750px) {
+  .qrcode__modal-export-form {
+    gap: calc(20 / var(--portrait-design-reference) * var(--screen-width-portrait));
+  }
+}
+@media screen and (min-width: 1024px) {
+  .qrcode__modal-export-form {
+    gap: calc(20 / var(--desktop-design-reference) * var(--screen-width-desktop));
+  }
+}
+.qrcode__size, .qrcode__file-type, .qrcode__save-button {
+  width: calc(250 / var(--mobile-design-reference) * var(--screen-width-mobile));
+}
+
+@media screen and (min-width: 750px) {
+  .qrcode__size, .qrcode__file-type, .qrcode__save-button {
+    width: calc(250 / var(--portrait-design-reference) * var(--screen-width-portrait));
+  }
+}
+@media screen and (min-width: 1024px) {
+  .qrcode__size, .qrcode__file-type, .qrcode__save-button {
+    width: calc(250 / var(--desktop-design-reference) * var(--screen-width-desktop));
+  }
+}

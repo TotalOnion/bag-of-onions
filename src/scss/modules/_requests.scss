@@ -1,0 +1,54 @@
+@use '../utils/utils' as *;
+@use '../partials/buttons';
+
+.requests-form {
+  &__title {
+    color: var(--text-color);
+  }
+
+  &__copy {
+    padding: 20px 0px;
+
+    padding: fluidSize(20, 'mobile') 0;
+
+    @include device($tabPortrait) {
+      padding: fluidSize(20, 'portrait') 0;
+    }
+
+    @include device($tabLandscape) {
+      padding: fluidSize(20, 'desktop') 0;
+    }
+  }
+
+  &__additional-comments-wrapper,
+  &__tool-description-wrapper {
+    display: flex;
+    align-items: center;
+
+    margin-top: fluidSize(20, 'mobile');
+
+    @include device($tabPortrait) {
+      margin-top: fluidSize(20, 'portrait');
+    }
+
+    @include device($tabLandscape) {
+      margin-top: fluidSize(20, 'desktop');
+    }
+  }
+
+  form {
+    width: 100%;
+    background-color: var(--body-bg-color);
+    padding: 10px 20px 20px;
+
+    padding: fluidSize(10, 'mobile') (20, 'mobile') (20, 'mobile');
+
+    @include device($tabPortrait) {
+      padding: fluidSize(10, 'portrait') (20, 'portrait') (20, 'portrait');
+    }
+
+    @include device($tabLandscape) {
+      padding: fluidSize(10, 'desktop') (20, 'desktop') (20, 'desktop');
+    }
+  }
+}

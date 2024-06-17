@@ -1,0 +1,128 @@
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[0].use[3]!./src/scss/modules/_screensize.scss ***!
+  \***********************************************************************************************************************************************************************************************/
+.onion-button__button-wrapper {
+  display: flex;
+  gap: 1em;
+  padding: 1em 0;
+}
+
+.onion-button__button-wrapper--vertical {
+  flex-direction: column;
+}
+
+.onion-button__button-wrapper--horizontal {
+  flex-direction: row;
+}
+
+.onion-button__button-wrapper--extra-padding {
+  padding: 2em 0;
+}
+
+.onion-button__button {
+  padding: 0.5em;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.4s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.onion-button__button--primary {
+  background-color: var(--body-bg-color);
+  border: 0.1em solid var(--border-color);
+  color: var(--c-black);
+}
+
+.onion-button__button--secondary {
+  background-color: var(--accent-color);
+  border: 0.1em solid var(--c-black);
+  color: var(--accent-text-color);
+}
+
+.onion-button__button--log {
+  position: absolute;
+  right: 1em;
+  background: white;
+  border-radius: 5px;
+}
+
+.onion-button__button:hover {
+  cursor: pointer;
+}
+
+.onion-button__button:hover.onion-button__button--primary {
+  background: var(--accent-color);
+  color: var(--accent-text-color);
+  border-color: var(--accent-color);
+}
+
+.onion-button__button:hover.onion-button__button--secondary {
+  background: var(--body-bg-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.screensize {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 40vh;
+}
+
+.screensize__title {
+  text-align: center;
+  margin-bottom: calc(20 / var(--mobile-design-reference) * var(--screen-width-mobile));
+}
+
+@media screen and (min-width: 750px) {
+  .screensize__title {
+    margin-bottom: calc(20 / var(--portrait-design-reference) * var(--screen-width-portrait));
+  }
+}
+@media screen and (min-width: 1024px) {
+  .screensize__title {
+    margin-bottom: calc(20 / var(--desktop-design-reference) * var(--screen-width-desktop));
+  }
+}
+.screensize__viewport {
+  text-align: center;
+}
+
+.screensize__actual {
+  text-align: center;
+}
+
+.screensize__copyToClipboard {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc(40 / var(--mobile-design-reference) * var(--screen-width-mobile));
+}
+
+@media screen and (min-width: 750px) {
+  .screensize__copyToClipboard {
+    margin-top: calc(40 / var(--portrait-design-reference) * var(--screen-width-portrait));
+  }
+}
+@media screen and (min-width: 1024px) {
+  .screensize__copyToClipboard {
+    margin-top: calc(40 / var(--desktop-design-reference) * var(--screen-width-desktop));
+  }
+}
+.screensize__button-confirmations {
+  text-align: center;
+  margin-top: calc(12 / var(--mobile-design-reference) * var(--screen-width-mobile));
+}
+
+@media screen and (min-width: 750px) {
+  .screensize__button-confirmations {
+    margin-top: calc(12 / var(--portrait-design-reference) * var(--screen-width-portrait));
+  }
+}
+@media screen and (min-width: 1024px) {
+  .screensize__button-confirmations {
+    margin-top: calc(12 / var(--desktop-design-reference) * var(--screen-width-desktop));
+  }
+}

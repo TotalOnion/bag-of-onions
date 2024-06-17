@@ -1,0 +1,26 @@
+{% extends '../layouts/base.twig' %}
+
+{% block title %}
+	{% set pageTitle = 'Lorem Ipsum Generator' %}
+	{{ pageTitle }}
+{% endblock %}
+
+{% block content %}
+        <div class="lorem-ipsum">   
+                <p class="lorem-ipsum__generated-text">        
+                </p>
+                {% include '../partials/buttons.twig' with { 
+		buttons: [
+			{ selector: 'generate-text', style: 'primary', blockClassName: 'lorem-ipsum', label: 'Generate Paragraph' },
+			{ selector: 'click-to-copy', style: 'primary', blockClassName: 'lorem-ipsum', label: 'Copy To Clipboard' }
+		],
+		} %}
+                <p class="lorem-ipsum__button-confirmations"></p>
+
+        </div>
+{% endblock %}
+
+
+{% block seoContent %}
+        [Your SEO Content]
+{% endblock %}

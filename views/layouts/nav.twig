@@ -1,0 +1,15 @@
+<ul class="site-nav">
+
+	{% for category, modules in modulesByCategory %}
+		<li class="site-nav__title">
+			<strong>{{  category  }}</strong>
+		</li>
+		{% for module in modules %}
+			<a class="site-nav__item-link {{module.hideNav ? 'hide-from-nav' : ''}}" href="{{ module.path }}">
+				<li class="site-nav__item">
+					{{ module.name }}
+				</li>
+			</a>
+		{% endfor %}
+	{% endfor %}
+</ul>

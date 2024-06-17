@@ -1,0 +1,21 @@
+{% extends '../layouts/base.twig' %}
+
+
+{% block title %}
+	{% set pageTitle = 'IP Grabber' %}
+	{{ pageTitle }}
+{% endblock %}
+
+
+{% block content %}
+	<div class="ipgrabber">
+		<h2 class="ipgrabber__title">Whats my IP?</h2>
+		<div class="ipgrabber__address">{{userIp}}</div>
+		{% include '../partials/buttons.twig' with { 
+		buttons: [
+		{ id: 'copyToClipboard', selector: 'click-to-copy', style: 'primary', blockClassName: 'ipgrabber', label: 'Copy To Clipboard' }
+		],
+		} %}
+		<p class="ipgrabber__button-confirmations"></p>
+	</div>
+{% endblock %}

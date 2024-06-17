@@ -1,0 +1,6 @@
+{
+	"watch": ["express", "views"],
+	"ext": "twig",
+	"ignore": ["node_modules"],
+	"exec": "node express/server.js"
+}

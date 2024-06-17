@@ -1,0 +1,75 @@
+{% extends '../layouts/base.twig' %}
+
+{% block title %}
+	{% set pageTitle = 'Requests' %}
+	{{ pageTitle }}
+{% endblock %}
+
+
+{% block content %}
+	<div class="requests-form">
+		<h2 class="requests-form__title">Request Form</h2>
+		<p class="requests-form__copy">Please fill out the form below with your tool request. Provide as much detail as possible to help us understand your need.</p>
+
+
+		<form
+			id="requestForm">
+			<!-- Personal Information -->
+			<fieldset>
+				<legend>Personal Information</legend>
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" required>
+
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email" required>
+
+				<label for="role">Role:</label>
+				<select id="role" name="role">
+					<option value="developer">Developer</option>
+					<option value="designer">Designer</option>
+					<option value="other">Other</option>
+				</select>
+			</fieldset>
+
+			<!-- Tool Information -->
+			<fieldset>
+				<legend>Tool Information</legend>
+				<label for="toolname">Tool Name:</label>
+				<input type="text" id="toolname" name="toolname" required>
+
+				<label for="tooltype">Tool Type:</label>
+				<select id="tooltype" name="tooltype">
+					<option value="utility">Utility</option>
+					<option value="design">Design</option>
+					<option value="development">Development</option>
+					<option value="other">Other</option>
+				</select>
+				<div class="requests-form__tool-description-wrapper">
+					<label for="description">Tool Description:</label>
+					<textarea id="description" name="description" rows="4" cols="50"></textarea>
+				</div>
+			</fieldset>
+
+			<!-- Additional Comments -->
+			<fieldset>
+				<legend>Additional Comments</legend>
+				<div class="requests-form__additional-comments-wrapper">
+					<label for="comments">Additional Comments:</label>
+					<textarea id="comments" name="comments" rows="4" cols="50"></textarea>
+				</div>
+			</fieldset>
+
+
+			<input type="submit" class="onion-button__button onion-button__button--primary" value="Submit Request">
+
+		</form>
+		<div id="result" style="display: none;">
+
+			<h2 style="margin-bottom: 1em">Thank you for your submission!</h2>
+
+			<button class="onion-button__button onion-button__button--primary">Submit Another Request</button>
+
+		</div>
+
+	</div>
+{% endblock %}
