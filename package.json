@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon express/server.js",
-    "watch": "npx webpack",
+    "watch": "npx webpack --mode development",
+    "build": "npx webpack --mode production",
     "create-module": "node scripts/create-module.js",
     "delete-module": "node scripts/delete-module.js"
   },

@@ -10,7 +10,7 @@ commands:
           name: npm install & build
           command: |
             npm install
-            npx webpack
+            npm run build
             echo " -- Build done"
   deploy:
     description: Deploy to an environment

@@ -18,63 +18,65 @@ function generateScssEntries() {
     return entries;
 }
 
-
-module.exports = {
-    mode: 'development',
-    entry: {
-        'main': ['./src/js/main.js', './src/scss/main.scss'],
-        ...generateScssEntries(), // Spread the dynamically generated module entries
-    },
-    output: {
-        path: path.resolve(__dirname, 'public'),
-        filename: 'js/[name].bundle.js',
-        chunkFilename: 'js/modules/[name].module.js',
-        clean: true,
-    },
-    watch: true,
-    module: {
-        rules: [
-            {
-                test: /\.scss$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader',
-                    {
-                        loader: 'sass-loader',
-                        options: { sourceMap: true }
+module.exports = (env, argv) => {
+    const isProduction = argv.mode === 'production';
+    return {
+        mode: isProduction ? 'production' : 'development',
+        entry: {
+            'main': ['./src/js/main.js', './src/scss/main.scss'],
+            ...generateScssEntries(), // Spread the dynamically generated module entries
+        },
+        output: {
+            path: path.resolve(__dirname, 'public'),
+            filename: 'js/[name].bundle.js',
+            chunkFilename: 'js/modules/[name].module.js',
+            clean: true,
+        },
+        watch: !isProduction,
+        module: {
+            rules: [
+                {
+                    test: /\.scss$/,
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        'css-loader',
+                        'sass-loader',
+                        {
+                            loader: 'sass-loader',
+                            options: { sourceMap: true }
+                        }
+                    ],
+                },
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: { presets: ['@babel/preset-env'] }
                     }
-                ],
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: { presets: ['@babel/preset-env'] }
                 }
-            }
+            ],
+        },
+        resolve: {
+            fallback: { "path": require.resolve("path-browserify") }
+        },
+        plugins: [
+            new RemoveEmptyScriptsPlugin(),
+            new MiniCssExtractPlugin({
+                filename: 'css/[name].css',
+                chunkFilename: 'css/[name].[contenthash].css'
+            })
         ],
-    },
-    resolve: {
-        fallback: { "path": require.resolve("path-browserify") }
-    },
-    plugins: [
-        new RemoveEmptyScriptsPlugin(),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].css',
-            chunkFilename: 'css/[name].[contenthash].css'
-        })
-    ],
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all',
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    vendor: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendors',
+                        chunks: 'all',
+                    },
                 },
             },
         },
-    },
+    };
 };
