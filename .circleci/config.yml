@@ -18,8 +18,11 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
-      - npm install
-      - npx webpack
+      - run:
+          name: npm install & build
+          command: |
+            npm install
+            npx webpack
       - run:
           name: Add the server to the known_hosts file
           command: |
