@@ -2,6 +2,47 @@
 # See: https://circleci.com/docs/configuration-reference
 version: 2.1
 
+commands:
+  build:
+    description: Build the app
+    steps:
+    - run:
+          name: npm install & build
+          command: |
+            npm install
+            npx webpack
+            echo " -- Build done"
+  deploy:
+    description: Deploy to an environment
+    parameters:
+      release_path:
+        type: string
+        default: /var/www/$PROJECT_DOMAIN_NAME/releases/$CIRCLE_BUILD_NUM/
+      releases_to_delete:
+        type: integer
+        default: 5
+    steps:
+      - run:
+          name: Add the server to the known_hosts file
+          command: |
+            ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+      - run:
+          name: Create << parameters.release_path >> folder
+          command: |
+            ssh $SSH_USER@$SSH_HOST "sudo mkdir << parameters.release_path >>; sudo chown $SSH_USER:$SSH_USER << parameters.release_path >>"
+      - run:
+          name: Rsync contents
+          command: |
+            rsync -az --delete --exclude='.git' . $SSH_USER@$SSH_HOST:<< parameters.release_path >>
+      - run:
+          name: Enable new release
+          command: |
+            ssh $SSH_USER@$SSH_HOST "cd << parameters.release_path >>/../; sudo rm -f current; sudo ln -s $CIRCLE_BUILD_NUM current"
+      - run:
+          name: Delete old releases
+          command: |
+            ssh $SSH_USER@$SSH_HOST "cd << parameters.release_path >>/../; ls -tp | grep -E '[0-9]+' | tail -n +<< parameters.releases_to_delete >> | xargs -I {} sudo rm -r -- {}"
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/jobs-steps/#jobs-overview & https://circleci.com/docs/configuration-reference/#jobs
 jobs:
@@ -18,15 +59,9 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
-      - run:
-          name: npm install & build
-          command: |
-            npm install
-            npx webpack
-      - run:
-          name: Add the server to the known_hosts file
-          command: |
-            ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+      - build
+      - deploy:
+          release_path: /var/www/$PROJECT_DOMAIN_NAME/releases/$CIRCLE_BUILD_NUM/
 
 workflows:
   build-and-deploy:
