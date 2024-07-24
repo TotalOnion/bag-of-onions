@@ -60,7 +60,9 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       - build
+      - run: sudo apt update
       - run: sudo apt install rsync
+      - run: sudo docker-php-ext-install zip
       - deploy:
           release_path: /var/www/$PROJECT_DOMAIN_NAME/releases/$CIRCLE_BUILD_NUM/
 
